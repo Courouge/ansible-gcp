@@ -29,7 +29,10 @@
     mode: 0755
 
 - name: download sources
-  get_url: url="http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz" dest=/opt/apache-maven-3.3.9-bin.tar.gz
+  get_url:
+    url: "http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
+    dest: /opt/
+    mode: 0777
 
 - name: Extract archive apache-maven-3.3.9-bin.tar.gz
   unarchive:
