@@ -4,10 +4,11 @@
 - name: Update all packages to the latest version
   apt:
     upgrade: dist
+  become: yes
 
 - name: Install the package wget
   apt:
     name: wget
     state: present
-
+  become: yes
 ...
