@@ -38,10 +38,11 @@
     var: ansible_path
 
 - name: Extract archive apache-maven-3.3.9-bin.tar.gz
-  unzip:
+  unarchive:
     src: /opt/apache-maven-3.3.9-bin.tar.gz
     dest: /opt/apache-maven
     copy: yes
+    remote_src: yes
   become: true
 
 - name: stat apache-maven-3.3.9
