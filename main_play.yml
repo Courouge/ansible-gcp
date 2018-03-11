@@ -3,4 +3,4 @@
   roles:
      - { role: common }
      - { role: java }
-     - { role: maven }
+     - { role: maven, become: yes}
