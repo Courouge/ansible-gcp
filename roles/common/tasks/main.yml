@@ -31,8 +31,11 @@
 - name: download sources
   get_url:
     url: "http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
-    dest: /opt/
+    dest: /opt/apache-maven-3.3.9-bin.tar.gz
     mode: 0777
+
+- debug:
+    var: ansible_path
 
 - name: Extract archive apache-maven-3.3.9-bin.tar.gz
   unarchive:
