@@ -6,18 +6,25 @@
     name: wget
     state: present
 
-- apt_repository:
-    repo: 'ppa:webupd8team/java'
+- name: Add apt repository
+  apt_repository:
+      repo: 'ppa:webupd8team/java'
+      state: present
+      update_cache: yes
 
-- name: Update all packages to the latest version
-  apt:
-    upgrade: dist
+- name: Accept license
+  debconf:
+    name: 'oracle-java8-installer'
+    question: 'shared/accepted-oracle-license-v1-1'
+    value: 'true'
+    vtype: 'select'
 
-- name: Install the package oracle-java8-installer
-  apt:
-    name: oracle-java8-installer
-    state: installed
-    install_recommends: no
+- name: Install java
+  apt: name={{ item }} state=present
+  with_items:
+      - oracle-java8-installer
+      - ca-certificates
+      - oracle-java8-set-default
 
 # create /opt/ directory if it doesn't exist
 - file:
