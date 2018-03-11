@@ -56,5 +56,5 @@
     mode: 0755
 
 - name: source /etc/profile.d/mavenenv.sh
-  command: source /etc/profile.d/mavenenv.sh
+  command: "source /etc/profile.d/mavenenv.sh"
 ...
