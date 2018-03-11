@@ -2,3 +2,4 @@
 - hosts: webcrawler
   roles:
      - common
+  become: yes
