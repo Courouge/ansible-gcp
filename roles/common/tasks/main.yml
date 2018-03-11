@@ -16,7 +16,7 @@
 - name: Install the package oracle-java8-installer
   apt:
     name: oracle-java8-installer
-    state: present
+    state: force
     install_recommends: no
 
 # create /opt/ directory if it doesn't exist
