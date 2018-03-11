@@ -6,59 +6,10 @@
     name: wget
     state: present
 
-- name: Add apt repository
-  apt_repository:
-      repo: 'ppa:webupd8team/java'
-      state: present
-      update_cache: yes
-
-- name: Accept license
-  debconf:
-    name: 'oracle-java8-installer'
-    question: 'shared/accepted-oracle-license-v1-1'
-    value: 'true'
-    vtype: 'select'
-
-- name: Install java
-  apt: name={{ item }} state=present
-  with_items:
-      - oracle-java8-installer
-      - ca-certificates
-      - oracle-java8-set-default
-
 # create /opt/ directory if it doesn't exist
 - file:
     path: /opt
     state: directory
     mode: 0755
 
-- name: download sources
-  get_url:
-    url: "http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz"
-    dest: /opt/apache-maven-3.3.9-bin.tar.gz
-    mode: 0777
-
-# create /opt/maven directory if it doesn't exist
-- file:
-    path: /opt/maven
-    state: directory
-    mode: 0755
-
-- name: Extract archive apache-maven-3.3.9-bin.tar.gz
-  unarchive:
-    src: /opt/apache-maven-3.3.9-bin.tar.gz
-    dest: /opt/maven
-    remote_src: yes
-  become: true
-
-- name: ensure file exists
-  copy:
-    content: "export M2_HOME=/opt/maven
-              export PATH=${M2_HOME}/bin:${PATH}"
-    dest: /etc/profile.d/mavenenv.sh
-    force: no
-    mode: 0755
-
-- name: source /etc/profile.d/mavenenv.sh
-  shell: "/etc/profile.d/mavenenv.sh"
 ...

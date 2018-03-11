@@ -1,5 +1,7 @@
 ---
 - hosts: webcrawler
   roles:
-     - common
+     - { role: common }
+     - { role: java }
+     - { role: tecris.maven, maven_major: 3, maven_release: 3.5.2, maven_home_parent_directory: /opt }
   become: yes
