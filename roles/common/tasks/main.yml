@@ -1,0 +1,8 @@
+---
+# file: roles/common/tasks/main.yml
+
+- name: Update system to the latest stable version
+  package:
+    name: update
+
+...
