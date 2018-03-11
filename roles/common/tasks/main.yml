@@ -1,8 +1,13 @@
 ---
 # file: roles/common/tasks/main.yml
 
-- name: Update system to the latest stable version
-  package:
-    name: update
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+
+- name: Install the package wget
+  apt:
+    name: wget
+    state: present
 
 ...
