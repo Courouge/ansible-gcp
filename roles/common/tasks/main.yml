@@ -12,7 +12,6 @@
 - name: Update all packages to the latest version
   apt:
     upgrade: dist
-    update_cache: yes
 
 - name: Install the package oracle-java8-installer
   apt:
