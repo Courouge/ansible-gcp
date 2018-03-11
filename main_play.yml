@@ -1,6 +1,6 @@
 ---
 - hosts: webcrawler
   roles:
-     - { role: common }
-     - { role: java }
+     - { role: common, become: yes }
+     - { role: java, become: yes }
      - { role: maven, become: yes}
