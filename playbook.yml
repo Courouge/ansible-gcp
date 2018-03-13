@@ -1,5 +1,5 @@
 ---
-- hosts: webcrawler
+- hosts: all
   gather_facts: False
   become: True
   pre_tasks:
@@ -29,8 +29,6 @@
     # Gather facts once ansible dependencies are installed
     - name: Gather facts
       setup:
+
   roles:
-     - { role: common, become: yes }
-     - { role: java, become: yes }
-     - { role: maven, become: yes}
-     - { role: scala, become: yes}
+     - { role: "scala" }
